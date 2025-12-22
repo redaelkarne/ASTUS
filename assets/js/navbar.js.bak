@@ -1,0 +1,212 @@
+/**
+ * Navbar functionality - version complètement révisée
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Initialisation de la navbar - version simplifiée");
+  
+  // Éléments principaux avec vérification immédiate
+  const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+  const navbar = document.querySelector('#navbar');
+  const header = document.querySelector('#header');
+
+  // Logs de vérification
+  console.log("Bouton toggle:", mobileNavToggle);
+  console.log("Navbar:", navbar);
+  console.log("Header:", header);
+
+  // Vérification des éléments essentiels
+  if (!mobileNavToggle) {
+    console.error("ERREUR CRITIQUE: Bouton mobile toggle non trouvé");
+    return; // Sortie précoce si élément manquant
+  }
+  
+  if (!navbar) {
+    console.error("ERREUR CRITIQUE: Navbar non trouvée");
+    return;
+  }
+  
+  if (!header) {
+    console.error("ERREUR CRITIQUE: Header non trouvé");
+    return;
+  }
+
+  // Fonction simplifiée pour ouvrir le menu mobile
+  function openMobileMenu() {
+    console.log("OUVERTURE du menu mobile");
+    navbar.style.right = "0"; // Position directe via style
+    navbar.classList.add('navbar-mobile');
+    
+    // Changement d'icône
+    const icon = mobileNavToggle.querySelector('i');
+    if (icon) {
+      icon.className = 'bi bi-x'; // Remplacement direct de classe
+    }
+    
+    // Ajout de classe et style de page
+    header.classList.add('mobile-menu-active');
+    document.body.style.overflow = 'hidden';
+    
+    // Log de vérification après action
+    console.log("État après ouverture:", navbar.classList.contains('navbar-mobile'), 
+                "Style right:", navbar.style.right);
+  }
+
+  // Fonction simplifiée pour fermer le menu mobile
+  function closeMobileMenu() {
+    console.log("FERMETURE du menu mobile");
+    navbar.style.right = "-100%"; // Position directe via style
+    navbar.classList.remove('navbar-mobile');
+    
+    // Changement d'icône
+    const icon = mobileNavToggle.querySelector('i');
+    if (icon) {
+      icon.className = 'bi bi-list'; // Remplacement direct de classe
+    }
+    
+    // Suppression de classe et style de page
+    header.classList.remove('mobile-menu-active');
+    document.body.style.overflow = '';
+    
+    // Log de vérification après action
+    console.log("État après fermeture:", navbar.classList.contains('navbar-mobile'),
+                "Style right:", navbar.style.right);
+  }
+
+  // Gestionnaire d'événement simplifié pour le bouton toggle
+  console.log("Configuration de l'événement click sur le bouton mobile");
+  mobileNavToggle.addEventListener('click', function(e) {
+    console.log("CLIC DÉTECTÉ sur le bouton mobile");
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Vérification basée sur l'état actuel
+    if (navbar.style.right === "0px" || navbar.classList.contains('navbar-mobile')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  // Gestion simplifiée des clics sur les liens
+  const navbarLinks = document.querySelectorAll('#navbar .nav-link, #navbar a');
+  navbarLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      console.log("Clic sur un lien du menu");
+      if (navbar.classList.contains('navbar-mobile')) {
+        // Option: Empêcher les clics si le lien est un ancre dans la même page
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault(); // Empêche le saut vers l'ancre
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            closeMobileMenu(); // Ferme d'abord le menu
+            
+            // Attend un peu pour le scroll après la fermeture du menu
+            setTimeout(() => {
+              targetElement.scrollIntoView({behavior: 'smooth'});
+            }, 300);
+          }
+        } else {
+          closeMobileMenu(); // Ferme simplement le menu pour les autres liens
+        }
+      }
+    });
+  });
+
+  // Gestionnaire simplifié pour les clics en dehors du menu
+  document.addEventListener('click', function(e) {
+    // Vérifie si le menu est ouvert et si le clic est en dehors
+    if (navbar.classList.contains('navbar-mobile') && 
+        !navbar.contains(e.target) && 
+        e.target !== mobileNavToggle && 
+        !mobileNavToggle.contains(e.target)) {
+      console.log("Clic détecté en dehors du menu");
+      closeMobileMenu();
+    }
+  });
+
+  // Gestion du scroll pour effet header
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 100) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+  });
+
+  // Initialisation de l'état au chargement de la page
+  console.log("Initialisation terminée");
+});
+
+  // Gestion de la page active
+  const currentPage = window.location.pathname.split('/').pop();
+  const menuItems = document.querySelectorAll('#navbar .nav-link');
+  
+  if (currentPage === '' || currentPage === '/' || currentPage === 'index.html') {
+    const homeLink = document.querySelector('#navbar .nav-link[href="index.html"]');
+    if (homeLink) homeLink.classList.add('active');
+  } else {
+    menuItems.forEach(function(menuItem) {
+      const menuItemHref = menuItem.getAttribute('href');
+      if (currentPage === menuItemHref) {
+        menuItem.classList.add('active');
+      } else if (currentPage.includes('Permanences-Téléphonique.html') || 
+                currentPage.includes('Telealarme.html') || 
+                currentPage.includes('Intervention.html')) {
+        if (menuItemHref === 'services.html' || menuItemHref === '#services-section') {
+          menuItem.classList.add('active');
+        }
+      }
+    });
+  }
+
+  // Gestion du modal
+  const openFormButton = document.getElementById('openFormButton');
+  if (openFormButton) {
+    openFormButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      const modal = document.getElementById('myModal');
+      if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+
+        const closeBtn = modal.querySelector('.close');
+        if (closeBtn) {
+          closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+          }
+        }
+
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+          }
+        }
+      }
+    });
+  }
+
+  // Gestion du deuxième bouton pour le modal
+  const openFormButton2 = document.getElementById('openFormButton2');
+  if (openFormButton2) {
+    openFormButton2.addEventListener('click', function(e) {
+      e.preventDefault();
+      const modal = document.getElementById('myModal');
+      if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  }
+  
+  // Gérer le redimensionnement de la fenêtre
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 991) {
+      // Si on passe en mode desktop, on remet tout à zéro
+      closeMobileMenu();
+    }
+  });
+});

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Contact -ASTUS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.jpg" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://unpkg.com">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS Files -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/navbar.css" rel="stylesheet">
+  
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: #888;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close:hover {
+      color: #333;
+    }
+    
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header-modern fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/ASTUS logo.jpg" alt="ASTUS Logo" class="img-fluid">
+        <h1 class="ms-3 mb-0">ASTUS</h1>
+      </a>
+      
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" class="nav-link">Accueil</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="recrutement.html" class="nav-link">Nous rejoindre</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+          <li><a href="https://webclient.astus.fr/" class="btn-client" target="_blank">Accès clients</a></li>
+          <li><a href="#" class="btn-quote" id="openFormButton">Demander un devis</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header mb-4">
+        <h3 class="text-center">Demande de Devis</h3>
+        <p class="text-center text-muted">Remplissez ce formulaire et nous vous contacterons rapidement</p>
+      </div>
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="modal-name" class="visually-hidden">Votre Nom</label>
+            <input type="text" name="name" class="form-control" id="modal-name" placeholder="Votre Nom" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <label for="modal-email" class="visually-hidden">Votre e-mail</label>
+            <input type="email" class="form-control" name="email" id="modal-email" placeholder="Votre e-mail" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-subject" class="visually-hidden">Sujet</label>
+          <input type="text" class="form-control" name="subject" id="modal-subject" placeholder="Sujet" required>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-message" class="visually-hidden">Décrivez vos besoins</label>
+          <textarea class="form-control" name="message" id="modal-message" rows="5" placeholder="Décrivez vos besoins..." required></textarea>
+        </div>
+        <div class="text-center mt-4"><button type="submit" class="btn btn-primary btn-lg">Envoyer la demande</button></div>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('openFormButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'block';
+
+      var closeBtn = document.getElementsByClassName('close')[0];
+      closeBtn.onclick = function() {
+        modal.style.display = 'none';
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Contact</h2>
+          <ol>
+            <li><a href="index.html">Accueil</a></li>
+            <li>Contact</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div>
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=289%20rue%20Garibaldi,69007%20LYON,FRANCE+(ASTUS)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>289 rue Garibaldi
+                  69007 LYON</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>E-mail:</h4>
+                <p><a href="mailto:astus@astus.fr" style="color: grey;">astus@astus.fr</a></p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call: </h4>
+                <p>0811 74 24 24</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form id="contact-form" role="form" class="emailjs-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nom" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre e-mail" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" required>
+              </div>
+              <div class="form-group mt-3">
+                <select class="form-control" name="contact-person" id="contact-person" required>
+                  <option value="">Sélectionner un contact</option>
+                  <option value="person1">Direction </option>
+                  <option value="person2">Responsable Administratif/Technique</option>
+                  <option value="person3">Service Comptabilité</option>
+                  <option value="person4">Résponsables Informatique</option>
+                  
+              </select>
+              </div>
+              
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Envoyer Message</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>ASTUS SARL</h3>
+              <p>
+                289 rue Garibaldi <br>
+                69007 LYON,FRANCE<br><br>
+                <strong>Tél : </strong>  0811 74 24 24<br>
+                <strong>E-mail: </strong><a href="mailto:astus@astus.fr" style="color: white;">astus@astus.fr</a><br>
+
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>liens utiles</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Accueil</a></li>
+              
+              <li><i class="bx bx-chevron-right"></i> <a href="services.html">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="blog.html">Blog</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about.html">Nous rejoindre</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Contact </a></li>
+            </ul>
+          </div>
+  
+         
+  
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Notre Newsletter</h4>
+            <p>Entrez votre e-mail pour recevoir davantage de nos nouvelles.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="s’inscrire">
+            </form>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+   
+  <!-- Template Main JS File -->
+ 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- EmailJS SDK & Script -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      // Initialisez EmailJS avec votre clé publique
+      // Obtenez-la ici : https://dashboard.emailjs.com/admin/account
+      emailjs.init("5tp05hrVMWzkOjGmx");
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const loading = this.querySelector('.loading');
+      const errorMessage = this.querySelector('.error-message');
+      const sentMessage = this.querySelector('.sent-message');
+
+      // Afficher le chargement
+      loading.classList.add('d-block');
+      errorMessage.classList.remove('d-block');
+      sentMessage.classList.remove('d-block');
+
+      // Préparation des paramètres avec le préfixe "Site: " pour le sujet
+      var formData = new FormData(this);
+      var params = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          subject: 'Site: ' + formData.get('subject'),
+          message: formData.get('message'),
+          'contact-person': formData.get('contact-person') // Spécifique à ce formulaire
+      };
+
+      // Envoyez le formulaire
+      // Remplacez YOUR_SERVICE_ID et YOUR_TEMPLATE_ID par vos identifiants EmailJS
+      emailjs.send('service_rl9c9sw', 'template_2zg2tlq', params)
+        .then(function() {
+            console.log('SUCCESS!');
+            loading.classList.remove('d-block');
+            sentMessage.classList.add('d-block');
+            document.getElementById('contact-form').reset();
+        }, function(error) {
+            console.log('FAILED...', error);
+            loading.classList.remove('d-block');
+            errorMessage.innerHTML = "Une erreur s'est produite : " + (error.text || JSON.stringify(error));
+            errorMessage.classList.add('d-block');
+        });
+    });
+  </script>
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+
+</html>

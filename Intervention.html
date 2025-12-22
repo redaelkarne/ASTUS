@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Intervention-ASTUS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.jpg" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS Files -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/navbar.css" rel="stylesheet">
+  
+  <style>
+    /* Styles prioritaires pour la navbar */
+    @media (max-width: 991px) {
+      /* Assurez-vous que l'icône est bien visible et cliquable */
+      .mobile-nav-toggle {
+        display: block !important;
+        cursor: pointer !important;
+        z-index: 9999 !important;
+      }
+      
+      /* Animation de l'icône lors du changement d'état */
+      .mobile-nav-toggle.bi-x {
+        transform: rotate(90deg);
+        transition: transform 0.3s;
+      }
+      
+      /* Assurez-vous que le menu s'ouvre correctement depuis la droite */
+      .header-modern .navbar {
+        right: -100% !important;
+        transition: right 0.3s ease !important;
+      }
+      
+      /* Quand le menu est ouvert */
+      .header-modern .navbar.navbar-mobile {
+        right: 0 !important;
+      }
+      
+      /* Overlay quand le menu est ouvert */
+      .header-modern.mobile-menu-active:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 996;
+        visibility: visible;
+      }
+    }
+    
+    /* Fix pour très petits écrans */
+    @media (max-width: 576px) {
+      .header-modern .logo img {
+        max-height: 40px !important;
+      }
+      
+      .header-modern .logo h1 {
+        font-size: 18px !important;
+      }
+      
+      .mobile-nav-toggle {
+        font-size: 24px !important; 
+        right: 10px !important;
+      }
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: #888;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close:hover {
+      color: #333;
+    }
+    
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* Styles pour le diaporama */
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .mySlides {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: relative;
+    }
+
+    .mySlides.active {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+
+  <!-- =======================================================
+  * Template Name: Sailor
+  * Updated: Aug 30 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/sailor-free-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+  <header id="header" class="header-modern fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/ASTUS logo.jpg" alt="ASTUS Logo" class="img-fluid">
+        <h1 class="ms-3 mb-0">ASTUS</h1>
+      </a>
+      
+      <i class="bi bi-list mobile-nav-toggle d-lg-none" aria-label="Menu"></i>
+      
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" class="nav-link">Accueil</a></li>
+          <li><a href="index.html#services-section" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="recrutement.html" class="nav-link">Nous rejoindre</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="https://webclient.astus.fr/" class="btn-client" target="_blank">Accès clients</a></li>
+          <li><a href="#" class="btn-quote" id="openFormButton">Demander un devis</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header mb-4">
+        <h3 class="text-center">Demande de Devis</h3>
+        <p class="text-center text-muted">Remplissez ce formulaire et nous vous contacterons rapidement</p>
+      </div>
+      <form id="quote-form" role="form" class="emailjs-form">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="modal-name" class="visually-hidden">Votre Nom</label>
+            <input type="text" name="name" class="form-control" id="modal-name" placeholder="Votre Nom" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <label for="modal-email" class="visually-hidden">Votre e-mail</label>
+            <input type="email" class="form-control" name="email" id="modal-email" placeholder="Votre e-mail" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-subject" class="visually-hidden">Sujet</label>
+          <input type="text" class="form-control" name="subject" id="modal-subject" placeholder="Sujet" required>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-message" class="visually-hidden">Décrivez vos besoins</label>
+          <textarea class="form-control" name="message" id="modal-message" rows="5" placeholder="Décrivez vos besoins..." required></textarea>
+        </div>
+        <div class="text-center mt-4"><button type="submit" class="btn btn-primary btn-lg">Envoyer la demande</button></div>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('openFormButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'block';
+
+      var closeBtn = document.getElementsByClassName('close')[0];
+      closeBtn.onclick = function() {
+        modal.style.display = 'none';
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+
+  <main id="main">
+    <section id="recrutement" class="recrutement">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="row content justify-content-center">
+          <div class="col-lg-10">
+            <br> <br> <br> <br> <br> <br> 
+            <div class="section-title text-center">
+            <p>Assistance Aux Personnes Bloquées</p>
+            </div>
+            <p style="text-align: justify; margin: 0 auto; line-height: 1.6;">En 1993, la Société ASTUS a débuté son activité dans le domaine des interventions d’urgence principalement dans la désincarcération.
+Aujourd’hui, notre service de qualité est reconnu par l’ensemble de la profession. 
+Notre expérience nous permet d’être actuellement Leader dans le domaine de la désincarcération sur le Grand Lyon. Nos techniciens interviennent dans tout le Grand Lyon 24h/24, 7j/7, 365 jours par an dans un délai maximum d’une heure. 
+
+Nous réceptionnons l’appel de l’usager grâce à notre centre spécialisé dans la réception d’appel cabine ascenseur. Nous transmettons la demande d’intervention à notre technicien en lui indiquant les informations relatives au site et à l’appelant. 
+Notre infrastructure nous permet d’assurer des interventions rapides grâce notamment à notre centre d’appel et notre flotte de véhicules.
+ Notre délai moyen d’arrivée sur site est de 25 minutes notamment grâce à la mise en place de 3 niveaux d’astreintes rendant nos équipes plus mobiles et plus disponibles pour chaque intervention.
+
+Nos techniciens sont formés selon une procédure spécifique permettant à la fois d’assurer la sécurité des usagers et des techniciens ainsi que l’intégrité du matériel de l’ascenseur. En effet, notre expérience nous a permis d’intervenir sur tous les types d’installations existant actuellement sur le marché des ascenseurs. 
+
+La société ASTUS souhaite continuer à répondre aux besoins des ascensoristes dans le cadre d’une complémentarité permettant une qualité de service pour les usagers.
+</p>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+    </section><!-- End recrutement Section -->
+  </main><!-- End #main -->
+   <!-- ======= Features Section ======= -->
+   <section id="features" class="features">
+    <div class="container">
+
+      <div class="section-title text-center">
+        <p>Désincarcération Ascenseurs</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3">
+          <ul class="nav nav-tabs flex-column">
+            <li class="nav-item">
+              <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">DÉSINCARCÉRATION ASCENSEURS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Le "Contrat Normal" De Désincarcération</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Le "Contrat Complet" De Désincarcération</a>
+            </li>
+            
+            
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-9 mt-4 mt-lg-0">
+          <div class="tab-content">
+            <div class="tab-pane active show" id="tab-1">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3 class="mb-3">DÉSINCARCÉRATION ASCENSEURS</h3>
+                  
+                  <p>Nos professionnels de la désincarcération sont de permanence 24 heures/24 et 7 jours/7. Nous proposons 2 types de contrat de désincarcération. Ainsi nous vous proposons 2 formules adéquates à vos besoins.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="assets/img/features-1.jpg" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-2">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3 class="mb-3">Le "Contrat Normal" De Désincarcération</h3>
+                 
+                  <p>Intervention 24h/24 365j / an <br>
+                    Délai d'intervention : 1h maximum à la réception de l'appel</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="assets/img/features-2.png" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-3">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3 class="mb-3">Le "Contrat Complet" De Désincarcération</h3>
+                 
+                  <p>Intervention 24h/24 365j / an<br>
+                    Délai d'intervention : 30 minutes maximum à la réception de l'appel
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="assets/img/features-2.png" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+     
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Features Section -->
+    
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>ASTUS SARL</h3>
+              <p>
+                289 rue Garibaldi <br>
+                69007 LYON,FRANCE<br><br>
+                <strong>Tél : </strong>  0811 74 24 24<br>
+                <strong>E-mail: </strong><a href="mailto:astus@astus.fr" style="color: white;">astus@astus.fr</a><br>
+
+              </p>
+             
+            </div>
+          </div>
+  
+          
+  
+         
+  
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Notre Newsletter</h4>
+            <p>Entrez votre e-mail pour recevoir davantage de nos nouvelles.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="s’inscrire">
+            </form>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    
+   </footer>
+   
+  <!-- Template Main JS File -->
+ 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/mobile-menu-fix.js"></script>
+
+  <script>
+    // Script pour le diaporama d'images
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fonction pour le diaporama
+      function startSlideshow() {
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.mySlides');
+        
+        function showSlides() {
+          // Masquer toutes les diapositives
+          for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove('active');
+          }
+          
+          // Incrémenter l'index et revenir à 0 si nécessaire
+          slideIndex++;
+          if (slideIndex >= slides.length) {
+            slideIndex = 0;
+          }
+          
+          // Afficher la diapositive actuelle
+          slides[slideIndex].classList.add('active');
+          
+          // Changer d'image toutes les 5 secondes
+          setTimeout(showSlides, 5000);
+        }
+        
+        // Démarrer le diaporama
+        showSlides();
+      }
+      
+      // Initialiser tous les diaporamas de la page
+      const slideshows = document.querySelectorAll('.slideshow-container');
+      if (slideshows.length > 0) {
+        startSlideshow();
+      }
+    });
+  </script>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("5tp05hrVMWzkOjGmx");
+    })();
+  </script>
+  <script>
+    // Handle form submission
+    function handleFormSubmit(event, formId) {
+      event.preventDefault();
+      const form = document.getElementById(formId);
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.innerText;
+      
+      btn.innerText = 'Envoi en cours...';
+      btn.disabled = true;
+
+      const serviceID = 'service_rl9c9sw';
+      const templateID = 'template_2zg2tlq';
+
+      const subjectInput = form.querySelector('input[name="subject"]');
+      if (subjectInput) {
+        if (!subjectInput.value.startsWith('Site: ')) {
+            subjectInput.value = 'Site: ' + subjectInput.value;
+        }
+      }
+
+      emailjs.sendForm(serviceID, templateID, form)
+        .then(() => {
+          btn.innerText = 'Message envoyé!';
+          btn.classList.remove('btn-primary');
+          btn.classList.add('btn-success');
+          form.reset();
+          setTimeout(() => {
+            btn.innerText = originalText;
+            btn.disabled = false;
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-primary');
+            if (formId === 'quote-form') {
+                const modal = document.getElementById("myModal");
+                if (modal) modal.style.display = "none";
+            }
+          }, 3000);
+        }, (err) => {
+          btn.innerText = 'Erreur!';
+          btn.classList.remove('btn-primary');
+          btn.classList.add('btn-danger');
+          console.error('EmailJS Error:', JSON.stringify(err));
+          alert('Une erreur est survenue: ' + JSON.stringify(err));
+          setTimeout(() => {
+            btn.innerText = originalText;
+            btn.disabled = false;
+            btn.classList.remove('btn-danger');
+            btn.classList.add('btn-primary');
+          }, 3000);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const quoteForm = document.getElementById('quote-form');
+      if (quoteForm) {
+        quoteForm.addEventListener('submit', (e) => handleFormSubmit(e, 'quote-form'));
+      }
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => handleFormSubmit(e, 'contact-form'));
+      }
+    });
+  </script>
+</body>
+
+</html>

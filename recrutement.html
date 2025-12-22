@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Rejoindre - ASTUS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.jpg" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS Files -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/navbar.css" rel="stylesheet">
+  
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: #888;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close:hover {
+      color: #333;
+    }
+    
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+  </style>
+
+  <!-- =======================================================
+  * Template Name: ASTUS
+  * Updated: Aug 30 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/ASTUS-free-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+  <header id="header" class="header-modern fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/ASTUS logo.jpg" alt="ASTUS Logo" class="img-fluid">
+        <h1 class="ms-3 mb-0">ASTUS</h1>
+      </a>
+      
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" class="nav-link">Accueil</a></li>
+          <li><a href="index.html#services-section" class="nav-link">Services</a></li>
+          <li><a href="recrutement.html" class="nav-link">Nous rejoindre</a></li>
+          <li><a href="index.html#contact-section" class="nav-link">Contact</a></li>
+          <li><a href="https://webclient.astus.fr/" class="btn-client" target="_blank">Accès clients</a></li>
+          <li><a href="#" class="btn-quote" id="openFormButton">Demander un devis</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header mb-4">
+        <h3 class="text-center">Demande de Devis</h3>
+        <p class="text-center text-muted">Remplissez ce formulaire et nous vous contacterons rapidement</p>
+      </div>
+      <form id="quote-form" role="form" class="emailjs-form">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="modal-name" class="visually-hidden">Votre Nom</label>
+            <input type="text" name="name" class="form-control" id="modal-name" placeholder="Votre Nom" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <label for="modal-email" class="visually-hidden">Votre e-mail</label>
+            <input type="email" class="form-control" name="email" id="modal-email" placeholder="Votre e-mail" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-subject" class="visually-hidden">Sujet</label>
+          <input type="text" class="form-control" name="subject" id="modal-subject" placeholder="Sujet" required>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-message" class="visually-hidden">Décrivez vos besoins</label>
+          <textarea class="form-control" name="message" id="modal-message" rows="5" placeholder="Décrivez vos besoins..." required></textarea>
+        </div>
+        <div class="text-center mt-4"><button type="submit" class="btn btn-primary btn-lg">Envoyer la demande</button></div>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('openFormButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'block';
+
+      var closeBtn = document.getElementsByClassName('close')[0];
+      closeBtn.onclick = function() {
+        modal.style.display = 'none';
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Nous rejoindre</h2>
+        
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <img src="/assets/img/recrutement/teleoperateur.jpg" class="teleoperateur" style="max-width: 50%; height: auto;">
+          </div>
+          <div class="col-lg-6">
+            <h2>Nous rejoindre</h2>
+            <h6>Fonction : télé-opérateur avec le contrat CDI à temps plein et à temps partiel entre 80 heures et 110 heures par mois environ. Le poste consiste à réceptionner des appels pour diverses sociétés, saisir des messages sur informatique et retransmettre ensuite les demandes via téléphone ou mail à des techniciens de permanence. Divers travaux administratifs pourront également être demandés.</h6>
+            <p><br>
+              Les conditions : Le candidat de formation Bac minimum aura OBLIGATOIREMENT :
+              <ul>
+                <li><i class="ri-check-double-line"></i>une bonne élocution</li>
+                <li><i class="ri-check-double-line"></i>une certaine aisance téléphonique</li>
+                <li><i class="ri-check-double-line"></i>une bonne pratique de l'outil informatique (Microsoft Office et Internet)</li>
+                <li><i class="ri-check-double-line"></i>une bonne maîtrise de l'orthographe et de la grammaire française (un test sera prévu à cet effet)</li>
+              </ul>
+              
+            </p>
+            <p  style="text-decoration: underline;"> Une formation sera assurée, donc les débutants sont acceptés.</p>
+          </div>
+          
+         
+       
+         
+        </div>
+        
+      </div>
+      <div class="container">
+        <hr style="border-color: purple;">
+        <div class="row content">
+          <div class="col-lg-6">
+            <br>
+            <h4>Avantages : </h4>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <br>
+            <p>
+              <span style="color: purple;">Tickets Restaurant</span>  
+            </p>
+            <p>
+              <span style="color: purple;"> Mutuelle</span>  
+            </p>
+            <p><span style="color: purple;">Prime Annuelle</span>  </p>
+            <p><span style="color: purple;"> Prise en charge à 50% Abonnement Transport</span>  </p>
+            
+          </div>
+        </div>
+        <hr style="border-color: purple;">
+        <section>
+          <h6>Envoyer votre CV et une lettre de motivation
+            au service recrutement : recrutement@astus.fr </a>.</h6>
+        </section>
+      </div>
+      
+    </section><!-- End About Section -->
+
+    
+
+  </main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>ASTUS SARL</h3>
+              <p>
+                289 rue Garibaldi <br>
+                69007 LYON,FRANCE<br><br>
+                <strong>Tél : </strong>  0811 74 24 24<br>
+                <strong>E-mail: </strong><a href="mailto:astus@astus.fr" style="color: white;">astus@astus.fr</a><br>
+
+              </p>
+             
+            </div>
+          </div>
+  
+          
+  
+         
+  
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Notre Newsletter</h4>
+            <p>Entrez votre e-mail pour recevoir davantage de nos nouvelles.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="s’inscrire">
+            </form>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    
+   </footer>
+   
+  <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+
+</html>

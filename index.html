@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ASTUS - Centre d'Appels Professionnel 24h/24 | Permanence Téléphonique Lyon</title>
+  <meta name="description" content="ASTUS, centre d'appels professionnel à Lyon. Permanence téléphonique 24h/24, téléalarme, intervention d'urgence. Solutions personnalisées pour votre communication.">
+  <meta name="keywords" content="centre d'appels, permanence téléphonique, téléalarme, Lyon, intervention urgence, communication professionnelle, ASTUS">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.jpg" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://unpkg.com">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.jpg" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Critical CSS only -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Google Fonts optimized -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/modern-styles.css" rel="stylesheet">
+  <link href="assets/css/navbar.css" rel="stylesheet">
+  <link href="assets/css/service-cards.css" rel="stylesheet">
+
+  <!-- Styles prioritaires pour la navbar -->
+  <style>
+    /* Styles supplémentaires pour assurer le bon fonctionnement de la navbar mobile */
+    @media (max-width: 991px) {
+      /* Assurez-vous que l'icône est bien visible et cliquable */
+      .mobile-nav-toggle {
+        display: block !important;
+        cursor: pointer !important;
+        z-index: 9999 !important;
+      }
+      
+      /* Animation de l'icône lors du changement d'état */
+      .mobile-nav-toggle.bi-x {
+        transform: rotate(90deg);
+        transition: transform 0.3s;
+      }
+      
+      /* Assurez-vous que le menu s'ouvre correctement depuis la droite */
+      .header-modern .navbar {
+        right: -100% !important;
+        transition: right 0.3s ease !important;
+      }
+      
+      /* Quand le menu est ouvert */
+      .header-modern .navbar.navbar-mobile {
+        right: 0 !important;
+      }
+      
+      /* Overlay quand le menu est ouvert */
+      .header-modern.mobile-menu-active:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 996;
+        visibility: visible;
+      }
+    }
+    
+    /* Fix pour très petits écrans */
+    @media (max-width: 576px) {
+      .header-modern .logo img {
+        max-height: 40px !important;
+      }
+      
+      .header-modern .logo h1 {
+        font-size: 18px !important;
+      }
+      
+      .mobile-nav-toggle {
+        font-size: 24px !important; 
+        right: 10px !important;
+      }
+    }
+  </style>
+
+  <!-- Accessibility CSS -->
+  <style>
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    
+    /* Swiper Hero Styles */
+    .hero-modern {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .hero-slider {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .hero-slide {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+    }
+    
+    .hero-logo-img {
+      max-width: 80px;
+      height: auto;
+    }
+    
+    .hero-title {
+      font-size: clamp(28px, 4vw, 64px);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 24px);
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .btn-hero {
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: #6b0080;
+      border: 2px solid #6b0080;
+      color : white;
+    }
+    
+    .btn-primary:hover {
+      background: #6b0080;
+      border-color: #6b0080;
+      color: white;
+    }
+    
+    .btn-outline-light {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    
+    .btn-outline-light:hover {
+      background: white;
+      color: #333;
+    }
+    
+    /* Swiper Navigation */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+    
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 20px;
+    }
+    
+    .swiper-pagination-bullet {
+      background: white;
+      opacity: 0.5;
+    }
+    
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: #6f42c1;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-logo-img {
+        max-width: 60px;
+      }
+      
+      .btn-hero {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header-modern fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/ASTUS logo.jpg" alt="ASTUS Logo" class="img-fluid">
+        <h1 class="ms-3 mb-0">ASTUS</h1>
+      </a>
+      
+      <i class="bi bi-list mobile-nav-toggle d-lg-none" aria-label="Menu"></i>
+      
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="#" class="nav-link active">Accueil</a></li>
+          <li><a href="#services-section" class="nav-link">Services</a></li>
+          <li><a href="recrutement.html" class="nav-link">Nous rejoindre</a></li>
+          <li><a href="#contact-section" class="nav-link">Contact</a></li>
+          <li><a href="https://webclient.astus.fr/" class="btn-client" target="_blank">Accès clients</a></li>
+          <li><a href="#" class="btn-quote" id="openFormButton">Demander un devis</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header mb-4">
+        <h3 class="text-center">Demande de Devis</h3>
+        <p class="text-center text-muted">Remplissez ce formulaire et nous vous contacterons rapidement</p>
+      </div>
+      <form id="quote-form" role="form" class="emailjs-form">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="modal-name" class="visually-hidden">Votre Nom</label>
+            <input type="text" name="name" class="form-control" id="modal-name" placeholder="Votre Nom" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <label for="modal-email" class="visually-hidden">Votre e-mail</label>
+            <input type="email" class="form-control" name="email" id="modal-email" placeholder="Votre e-mail" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-subject" class="visually-hidden">Sujet</label>
+          <input type="text" class="form-control" name="subject" id="modal-subject" placeholder="Sujet" required>
+        </div>
+        <div class="form-group mt-3">
+          <label for="modal-message" class="visually-hidden">Décrivez vos besoins</label>
+          <textarea class="form-control" name="message" id="modal-message" rows="5" placeholder="Décrivez vos besoins..." required></textarea>
+        </div>
+        <div class="text-center mt-4"><button type="submit" class="btn btn-primary btn-lg">Envoyer la demande</button></div>
+      </form>
+    </div>
+  </div>
+  
+<script>
+  document.getElementById('openFormButton').addEventListener('click', function() {
+  var modal = document.getElementById('myModal');
+  modal.style.display = 'block';
+
+  var closeBtn = document.getElementsByClassName('close')[0];
+  closeBtn.onclick = function() {
+    modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
+});
+</script>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero-modern">
+    <div class="hero-overlay"></div>
+    <div class="swiper hero-slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide hero-slide" style="background-image: url('assets/img/clients/image1.jpg');">
+          <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero-logo mb-4">
+                <img src="assets/img/ASTUS logo.jpg" alt="ASTUS Logo" class="hero-logo-img">
+              </div>
+              <h1 class="hero-title">Centre d'Appels Professionnel</h1>
+              <p class="hero-subtitle">Accueil téléphonique personnalisé 24h/24 - Gestion de parc d'entretien - Gestion d'astreinte - Téléalarme ascenseur</p>
+              <div class="hero-buttons mt-4">
+                <a href="#services-section" class="btn btn-primary btn-hero me-3">Découvrir nos services</a>
+                <a href="#contact-section" class="btn btn-outline-light btn-hero">Nous contacter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide hero-slide" style="background-image: url('assets/img/clients/image2.jpg');">
+          <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero-logo mb-4">
+                <img src="assets/img/ASTUS logo.jpg" alt="ASTUS Logo" class="hero-logo-img">
+              </div>
+              <h1 class="hero-title">Solutions Personnalisées</h1>
+              <p class="hero-subtitle">Nous adaptons nos services à votre secteur d'activité pour une communication optimale avec vos clients</p>
+              <div class="hero-buttons mt-4">
+                <a href="#services-section" class="btn btn-primary btn-hero me-3">En savoir plus</a>
+                <a href="#" class="btn btn-outline-light btn-hero" id="openFormButton2">Demander un devis</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide hero-slide" style="background-image: url('assets/img/clients/image3.jpg');">
+          <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero-logo mb-4">
+                <img src="assets/img/ASTUS logo.jpg" alt="ASTUS Logo" class="hero-logo-img">
+              </div>
+              <h1 class="hero-title">Expertise & Fiabilité</h1>
+              <p class="hero-subtitle">Une équipe de professionnels dédiée à votre service pour assurer la continuité de votre communication</p>
+              <div class="hero-buttons mt-4">
+                <a href="#contact-section" class="btn btn-primary btn-hero me-3">Contactez-nous</a>
+                <a href="recrutement.html" class="btn btn-outline-light btn-hero">Rejoignez-nous</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navigation arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <a href="#main" class="scroll-down">
+        <i class="bi bi-chevron-down"></i>
+      </a>
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about-section" class="about-modern py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="about-img-wrapper">
+              <img src="assets/img/call-center2.jpg" class="img-fluid rounded shadow-lg" alt="Centre d'appels ASTUS" style="max-width: 80%;">
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="about-content">
+              <div class="section-header mb-4">
+                <span class="section-subtitle">À propos d'ASTUS</span>
+                <h2 class="section-title">Un Centre d'Appels à votre service</h2>
+              </div>
+              <p class="mb-4">
+                Nous sommes là pour répondre aux besoins des sociétés souhaitant rester à l'écoute de leurs clients <strong>24 heures sur 24 et 365 jours par an</strong>.
+              </p>
+              <p class="mb-4">
+                La société ASTUS prend le relai de votre accueil téléphonique toute la journée, la nuit, les week-ends, quelques heures par jour ou par semaine, pendant les congés de votre secrétaire, pendant vos réunions... en offrant une gamme complète de services différents pour répondre à tous vos besoins.
+              </p>
+              
+              <div class="expertise-domains mb-4">
+                <h5 class="mb-3" style="color: #6b0080;">Nos domaines d'expertise technique :</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <ul class="list-unstyled expertise-list">
+                      <li><i class="bi bi-building me-2" style="color: #6b0080;"></i> Ascenseurs</li>
+                      <li><i class="bi bi-door-open me-2" style="color: #6b0080;"></i> Portes automatiques</li>
+                      <li><i class="bi bi-lightning-charge me-2" style="color: #6b0080;"></i> Groupes électrogènes</li>
+                      <li><i class="bi bi-thermometer-snow me-2" style="color: #6b0080;"></i> Froid industriel</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul class="list-unstyled expertise-list">
+                      <li><i class="bi bi-thermometer-high me-2" style="color: #6b0080;"></i> Chauffage et climatisation</li>
+                      <li><i class="bi bi-shield-exclamation me-2" style="color: #6b0080;"></i> Gestion de crise</li>
+                      <li><i class="bi bi-plus-circle me-2" style="color: #6b0080;"></i> Et bien d'autres services</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <a href="#services-section" class="btn btn-primary btn-lg">Découvrir nos services</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Why Choose Us Section ======= -->
+    <section id="why-choose-section" class="why-choose-modern py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="why-choose-content">
+              <div class="section-header mb-4">
+                <span class="section-subtitle">Pourquoi choisir ASTUS ?</span>
+                <h2 class="section-title">Qui sommes-nous ?</h2>
+              </div>
+              <p class="mb-4">
+                La société ASTUS a été créée en 1993 pour répondre aux besoins des sociétés souhaitant rester à l'écoute de leurs clients 24 heures sur 24 et 365 jours par an. Nous sommes votre solution pour la continuité de l’accueil téléphonique.
+              </p>
+              <p class="mb-4">
+                Notre expertise réside dans l'acheminement, qui nous permet de rediriger les appels de vos clients ou fournisseurs vers les téléphones fixes ou les téléphones portables de vos collaborateurs. Nous transmettons les messages conformément à vos instructions, qu'il s'agisse de l'intégralité des messages ou uniquement des urgences à votre équipe d'astreinte.
+              </p>
+              <p class="mb-4">
+               Notre professionnalisme, notre capacité d'adaptation, ainsi que notre utilisation de la technologie informatique et téléphonique de pointe font d'ASTUS le partenaire idéal pour répondre à vos besoins de communication.
+              </p>
+              
+              <div class="stats-wrapper mt-4">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="stat-item text-center">
+                      <div class="stat-number">24/7</div>
+                      <div class="stat-label">Service continu</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="stat-item text-center">
+                      <div class="stat-number">365</div>
+                      <div class="stat-label">Jours par an</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="why-choose-img-wrapper">
+              <img src="assets/img/call-center.jpg" class="img-fluid rounded shadow-lg" alt="Équipe ASTUS">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Why Choose Us Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services-section" class="services-modern py-5">
+      <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+          <span class="section-subtitle">Nos Services</span>
+          <h2 class="section-title">Une gamme complète de services</h2>
+          <p class="section-description">Découvrez nos solutions professionnelles adaptées à vos besoins</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="Permanences-Téléphonique.html" class="text-decoration-none">
+              <div class="service-card h-100">
+                <div class="service-icon">
+                  <i class="bi bi-telephone-fill"></i>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">Permanence Téléphonique</h3>
+                  <p class="service-description">Qu’importe votre corps de métier, ASTUS s’adapte à vos besoins et vous assure un service de qualité grâce à notre équipe de téléopérateurs qui se relie 24 heures/24 et 7 jours/7 </p>
+                  <div class="service-features">
+                    <span class="feature-tag">24/7</span>
+                    <span class="feature-tag">Personnalisé</span>
+                    <span class="feature-tag">Professionnel</span>
+                  </div>
+                  <span class="service-link">
+                    En savoir plus <i class="bi bi-arrow-right"></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <a href="Telealarme.html" class="text-decoration-none">
+              <div class="service-card h-100">
+                <div class="service-icon">
+                  <i class="bi bi-bell-fill"></i>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">Téléalarme</h3>
+                  <p class="service-description">Notre téléalarme assurant une liaison bidirectionnelle d'urgence, une identification automatique de l'origine de l'appel et des tests cycliques pour une sécurité optimale dans les ascenseurs.</p>
+                  <div class="service-features">
+                    <span class="feature-tag">Sécurité</span>
+                    <span class="feature-tag">Urgence</span>
+                    <span class="feature-tag">Fiable</span>
+                  </div>
+                  <span class="service-link">
+                    En savoir plus <i class="bi bi-arrow-right"></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <a href="Intervention.html" class="text-decoration-none">
+              <div class="service-card h-100">
+                <div class="service-icon">
+                  <i class="bi bi-tools"></i>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">Désincarcération ascenseur</h3>
+                  <p class="service-description">Le dégagement de personnes bloquées en ascenseurs est la première vocation de la société ASTUS. Et c'est l'activité qui a permis à la société de s'élancer sur les différents marchés dans lesquels elle est aujourd'hui leader.</p>
+                  <div class="service-features">
+                    <span class="feature-tag">Rapide</span>
+                    <span class="feature-tag">Expert</span>
+                    <span class="feature-tag">Disponible</span>
+                  </div>
+                  <span class="service-link">
+                    En savoir plus <i class="bi bi-arrow-right"></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <a href="Intervention_tech.html" class="text-decoration-none">
+              <div class="service-card h-100">
+                <div class="service-icon">
+                  <i class="bi bi-exclamation-triangle"></i>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">Intervention d’urgence</h3>
+                  <p class="service-description">Nous intervenons pour toute demande d’urgence technique sur Lyon et a région en mois d’une heure</p>
+                  <div class="service-features">
+                    <span class="feature-tag">Surveillance</span>
+                    <span class="feature-tag">Technique</span>
+                    <span class="feature-tag">Monitoring</span>
+                  </div>
+                  <span class="service-link">
+                    En savoir plus <i class="bi bi-arrow-right"></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+          <a href="#contact-section" class="btn btn-primary btn-lg">Demander un devis personnalisé</a>
+        </div>
+      </div>
+    </section>
+    <!-- End Services Section -->
+
+<!-- ======= Contact Section ======= -->
+ <section id="old-services-section" class="services  " >
+  
+  <div  class="container">
+<h2>Services</h2><br>
+    <div class="row" >
+
+      <div class="col-md-6" >
+        
+        <div class="icon-box" >
+          <a href="Permanences-Téléphonique.html">
+          <i class="bi bi-telephone-fill" ></i>
+          <h3>Permanence Téléphonique</h3>
+          <p>Qu'importe votre corps de métier, ASTUS s'adapte à vos besoins et vous assure des télé-opérateurs qui se relaient 24 heures/24 et 7 jours/7. <br><br></p>
+        </a>
+        </div>
+
+
+      </div>
+
+      <div class="col-md-6 mt-4 mt-md-0">
+        <div class="icon-box">
+          <a href="Telealarme.html">
+          <i class="bi bi-bell-fill"></i>
+          <h4>Téléalarme </h4>
+          <p>Notre téléalarme assurant une liaison bidirectionnelle d’urgence, une identification automatique de l’origine de l’appel et des tests cycliques pour une sécurité optimale dans les ascenseurs</p>
+        </a>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4 mt-md-0">
+        <div class="icon-box">
+          <a href="Intervention.html">
+          <i class="bi bi-speedometer"></i>
+          <h4>Intervention d'urgence</h4>
+          <p>C’est la première vocation de la société ASTUS. Et c’est l’activité qui a permis à la société de s’élancer sur les différents marchés dans lesquels elle est aujourd’hui leader</p>
+        </a>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4 mt-md-0">
+        <div class="icon-box">
+          <a href="Intervention_tech.html">
+          <i class="bi bi-activity"></i>
+          <h4>Intervention d’urgence </h4>
+          <p>C’est la première vocation de la société ASTUS. Et c’est l’activité qui a permis à la société de s’élancer sur les différents marchés dans lesquels elle est aujourd’hui leader</p>
+        </a>
+      </div>
+      </div>
+      
+    </div>
+  
+  </div>
+</section>
+<!-- End Services Section -->
+<!-- ======= Contact Section ======= -->
+<section id="contact-section" class="contact-modern py-5">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-subtitle">Contactez-nous</span>
+      <h2 class="section-title">Restons en contact</h2>
+      <p class="section-description">Notre équipe est à votre disposition pour répondre à toutes vos questions</p>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="map-container" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=289%20rue%20Garibaldi,69007%20LYON,FRANCE+(ASTUS)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" allowfullscreen title="Localisation ASTUS - 289 rue Garibaldi, 69007 Lyon"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4" data-aos="fade-right" data-aos-delay="200">
+        <div class="contact-info-card">
+          <div class="contact-icon">
+            <i class="bi bi-geo-alt"></i>
+          </div>
+          <h3>Notre Adresse</h3>
+          <p><a href="https://www.google.com/maps/search/?api=1&query=289+rue+Garibaldi+69007+LYON" style="color: #666;" target="_blank">289 rue Garibaldi<br>69007 LYON, France</a></p>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-icon">
+            <i class="bi bi-envelope"></i>
+          </div>
+          <h3>Email</h3>
+          <p><a href="mailto:astus@astus.fr" style="color: #666;">astus@astus.fr</a></p>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-icon">
+            <i class="bi bi-phone"></i>
+          </div>
+          <h3>Téléphone</h3>
+          <p><a href="tel:0811742424" style="color: #666;">0811 74 24 24</a></p>
+        </div>
+      </div>
+
+      <div class="col-lg-8" data-aos="fade-left" data-aos-delay="300">
+        <div class="contact-form">
+          <h3 class="mb-4">Envoyez-nous un message</h3>
+          <form id="contact-form" role="form" class="emailjs-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="contact-name" class="visually-hidden">Votre Nom</label>
+                <input type="text" name="name" class="form-control" id="contact-name" placeholder="Votre Nom" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <label for="contact-email" class="visually-hidden">Votre e-mail</label>
+                <input type="email" class="form-control" name="email" id="contact-email" placeholder="Votre e-mail" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="contact-subject" class="visually-hidden">Sujet</label>
+              <input type="text" class="form-control" name="subject" id="contact-subject" placeholder="Sujet" required>
+            </div>
+            <div class="form-group mt-3">
+              <label for="contact-message" class="visually-hidden">Votre message</label>
+              <textarea class="form-control" name="message" id="contact-message" rows="5" placeholder="Votre message..." required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Envoi en cours...</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Votre message a été envoyé avec succès !</div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg">Envoyer le message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Contact Section -->
+    
+  
+    
+  </main><!-- End #main -->
+ 
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>ASTUS SARL</h3>
+              <p>
+                289 rue Garibaldi <br>
+                69007 LYON,FRANCE<br><br>
+                <strong>Tél : </strong>  0811 74 24 24<br>
+                <strong>E-mail: </strong><a href="mailto:astus@astus.fr" style="color: white;">astus@astus.fr</a><br>
+
+              </p>
+             
+            </div>
+          </div>
+  
+          
+  
+         
+  
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Notre Newsletter</h4>
+            <p>Entrez votre e-mail pour recevoir davantage de nos nouvelles.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="s’inscrire">
+            </form>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    
+   </footer>
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Swiper JS -->
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navbar-sidebar.js"></script>
+  <script src="assets/js/navbar-sidebar.js"></script>
+  
+  <!-- Initialize AOS animations -->
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+  </script>
+
+  <!-- EmailJS SDK & Script -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      // Initialisez EmailJS avec votre clé publique
+      emailjs.init("5tp05hrVMWzkOjGmx");
+    })();
+
+    // Fonction générique pour gérer l'envoi de formulaire
+    function handleFormSubmit(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Création des éléments de feedback s'ils n'existent pas
+        let loading = this.querySelector('.loading');
+        let errorMessage = this.querySelector('.error-message');
+        let sentMessage = this.querySelector('.sent-message');
+
+        if (!loading) {
+            loading = document.createElement('div');
+            loading.className = 'loading';
+            loading.textContent = 'Envoi en cours...';
+            this.appendChild(loading);
+        }
+        if (!errorMessage) {
+            errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            this.appendChild(errorMessage);
+        }
+        if (!sentMessage) {
+            sentMessage = document.createElement('div');
+            sentMessage.className = 'sent-message';
+            sentMessage.textContent = 'Votre message a été envoyé avec succès !';
+            this.appendChild(sentMessage);
+        }
+
+        // Afficher le chargement
+        loading.style.display = 'block';
+        errorMessage.style.display = 'none';
+        sentMessage.style.display = 'none';
+
+        // Préparation des paramètres avec le préfixe "Site: " pour le sujet
+        var formData = new FormData(this);
+        var params = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: 'Site: ' + formData.get('subject'),
+            message: formData.get('message')
+        };
+
+        // Envoyez le formulaire
+         emailjs.send('service_rl9c9sw', 'template_2zg2tlq', params)
+          .then(function() {
+              console.log('SUCCESS!');
+              loading.style.display = 'none';
+              sentMessage.style.display = 'block';
+              form.reset();
+              
+              // Si c'est le modal, on peut le fermer après quelques secondes
+              if (formId === 'quote-form') {
+                  setTimeout(function() {
+                      document.getElementById('myModal').style.display = 'none';
+                      sentMessage.style.display = 'none'; // Reset message for next time
+                  }, 3000);
+              }
+          }, function(error) {
+              console.log('FAILED...', error);
+              loading.style.display = 'none';
+              errorMessage.innerHTML = "Une erreur s'est produite : " + (error.text || JSON.stringify(error));
+              errorMessage.style.display = 'block';
+          });
+      });
+    }
+
+    // Attacher les gestionnaires aux formulaires
+    document.addEventListener('DOMContentLoaded', function() {
+        handleFormSubmit('quote-form');
+        handleFormSubmit('contact-form');
+    });
+  </script>
+
+  <!-- Enhanced Modal Script -->
+  <script>
+    // Modal functionality
+    function openModal() {
+      document.getElementById('myModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('myModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Event listeners for modal
+    document.getElementById('openFormButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal();
+    });
+
+    // Check if there's a second button
+    const openFormButton2 = document.getElementById('openFormButton2');
+    if (openFormButton2) {
+      openFormButton2.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModal();
+      });
+    }
+
+    document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
+
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('myModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Enhanced Swiper Configuration
+    document.addEventListener('DOMContentLoaded', function() {
+      var heroSwiper = new Swiper('.hero-slider', {
+        direction: 'horizontal',
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        speed: 1000,
+        on: {
+          init: function() {
+            console.log('Swiper initialized successfully');
+          },
+          slideChange: function() {
+            // Restart animations on slide change
+            if (typeof AOS !== 'undefined') {
+              AOS.refresh();
+            }
+          }
+        }
+      });
+      
+      // Handle internal links and navigation
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          // Vérifier si c'est un lien à ne pas traiter (comme le bouton modal)
+          if (this.id === 'openFormButton' || this.id === 'openFormButton2') {
+            return;
+          }
+          
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const target = document.querySelector(targetId);
+          
+          if (target) {
+            // Récupérer la hauteur du header pour le décalage
+            const headerHeight = document.getElementById('header').offsetHeight || 0;
+            // Ajouter un espace supplémentaire (80px) pour plus de confort visuel
+            const offset = headerHeight + 5;
+            
+            // Calculer la position cible
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            
+            // Fermer le menu mobile si ouvert
+            const navbar = document.querySelector('#navbar');
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const header = document.querySelector('#header');
+            
+            if (navbar.classList.contains('navbar-mobile')) {
+              navbar.classList.remove('navbar-mobile');
+              mobileNavToggle.classList.add('bi-list');
+              mobileNavToggle.classList.remove('bi-x');
+              header.classList.remove('mobile-menu-active');
+              document.body.style.overflow = 'auto';
+            }
+            
+            // Défilement vers la cible
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 100) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+
+    // Add loading animation to forms
+    document.querySelectorAll('.php-email-form').forEach(form => {
+      form.addEventListener('submit', function(e) {
+        const loadingDiv = this.querySelector('.loading');
+        const button = this.querySelector('button[type="submit"]');
+        
+        if (loadingDiv && button) {
+          loadingDiv.style.display = 'block';
+          button.disabled = true;
+          button.textContent = 'Envoi en cours...';
+        }
+      });
+    });
+
+    // Remove parallax effect that causes layout issues
+    // Commented out to prevent movement on scroll
+    /*
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.hero-modern');
+      if (parallax) {
+        const speed = scrolled * 0.5;
+        parallax.style.transform = `translateY(${speed}px)`;
+      }
+    });
+    */
+  </script>
+
+
+
+
+  
+</body>
+
+</html>
