@@ -296,6 +296,16 @@
             <input type="email" class="form-control" name="email" id="modal-email" placeholder="Votre e-mail" required>
           </div>
         </div>
+        <div class="row mt-3">
+          <div class="col-md-6 form-group">
+            <label for="modal-phone" class="visually-hidden">Téléphone</label>
+            <input type="tel" name="phone" class="form-control" id="modal-phone" placeholder="Téléphone" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <label for="modal-company" class="visually-hidden">Société</label>
+            <input type="text" class="form-control" name="company" id="modal-company" placeholder="Société">
+          </div>
+        </div>
         <div class="form-group mt-3">
           <label for="modal-subject" class="visually-hidden">Sujet</label>
           <input type="text" class="form-control" name="subject" id="modal-subject" placeholder="Sujet" required>
@@ -357,7 +367,7 @@
               <p class="hero-subtitle">Nous adaptons nos services à votre secteur d'activité pour une communication optimale avec vos clients</p>
               <div class="hero-buttons mt-4">
                 <a href="#services-section" class="btn btn-primary btn-hero me-3">En savoir plus</a>
-                <a href="#" class="btn btn-outline-light btn-hero" id="openFormButton2">Demander un devis</a>
+                <a href="#" class="btn btn-outline-light btn-hero js-open-quote-modal">Demander un devis</a>
               </div>
             </div>
           </div>
@@ -593,7 +603,7 @@
         </div>
 
         <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
-          <a href="#contact-section" class="btn btn-primary btn-lg">Demander un devis personnalisé</a>
+          <a href="#" class="btn btn-primary btn-lg js-open-quote-modal">Demander un devis personnalisé</a>
         </div>
       </div>
     </section>
@@ -747,7 +757,7 @@
   
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>ASTUS SARL</h3>
+              <h3>ASTUS</h3>
               <p>
                 289 rue Garibaldi <br>
                 69007 LYON,FRANCE<br><br>
@@ -763,15 +773,13 @@
   
          
   
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Notre Newsletter</h4>
-            <p>Entrez votre e-mail pour recevoir davantage de nos nouvelles.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="s’inscrire">
-            </form>
-  
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Liens utiles</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="mentions-legales.html">Mentions Légales</a></li>
+            </ul>
           </div>
-  
+
         </div>
       </div>
     </div>
@@ -847,6 +855,8 @@
         var params = {
             name: formData.get('name'),
             email: formData.get('email'),
+            phone: formData.get('phone'),
+            company: formData.get('company'),
             subject: 'Site: ' + formData.get('subject'),
             message: formData.get('message')
         };
@@ -901,14 +911,13 @@
       openModal();
     });
 
-    // Check if there's a second button
-    const openFormButton2 = document.getElementById('openFormButton2');
-    if (openFormButton2) {
-      openFormButton2.addEventListener('click', function(e) {
+    // Event delegation for modal buttons (handles Swiper clones)
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('.js-open-quote-modal') || e.target.closest('.js-open-quote-modal')) {
         e.preventDefault();
         openModal();
-      });
-    }
+      }
+    });
 
     document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
 
@@ -958,7 +967,7 @@
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           // Vérifier si c'est un lien à ne pas traiter (comme le bouton modal)
-          if (this.id === 'openFormButton' || this.id === 'openFormButton2') {
+          if (this.id === 'openFormButton' || this.classList.contains('js-open-quote-modal')) {
             return;
           }
           

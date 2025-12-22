@@ -123,7 +123,7 @@
         <h3 class="text-center">Demande de Devis</h3>
         <p class="text-center text-muted">Remplissez ce formulaire et nous vous contacterons rapidement</p>
       </div>
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+      <form id="quote-form" role="form" class="emailjs-form">
         <div class="row">
           <div class="col-md-6 form-group">
             <label for="modal-name" class="visually-hidden">Votre Nom</label>
@@ -132,6 +132,16 @@
           <div class="col-md-6 form-group mt-3 mt-md-0">
             <label for="modal-email" class="visually-hidden">Votre e-mail</label>
             <input type="email" class="form-control" name="email" id="modal-email" placeholder="Votre e-mail" required>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6 form-group">
+            <label for="modal-phone" class="visually-hidden">Téléphone</label>
+            <input type="tel" name="phone" class="form-control" id="modal-phone" placeholder="Téléphone">
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <label for="modal-company" class="visually-hidden">Société</label>
+            <input type="text" name="company" class="form-control" id="modal-company" placeholder="Société">
           </div>
         </div>
         <div class="form-group mt-3">
@@ -298,18 +308,8 @@
               <li><i class="bx bx-chevron-right"></i> <a href="blog.html">Blog</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="about.html">Nous rejoindre</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Contact </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="mentions-legales.html">Mentions Légales</a></li>
             </ul>
-          </div>
-  
-         
-  
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Notre Newsletter</h4>
-            <p>Entrez votre e-mail pour recevoir davantage de nos nouvelles.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="s’inscrire">
-            </form>
-  
           </div>
   
         </div>
@@ -329,6 +329,65 @@
       // Obtenez-la ici : https://dashboard.emailjs.com/admin/account
       emailjs.init("5tp05hrVMWzkOjGmx");
     })();
+
+    // Handle form submission for Quote Form (Modal)
+    function handleFormSubmit(event, formId) {
+      event.preventDefault();
+      const form = document.getElementById(formId);
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.innerText;
+      
+      btn.innerText = 'Envoi en cours...';
+      btn.disabled = true;
+
+      const serviceID = 'service_rl9c9sw';
+      const templateID = 'template_2zg2tlq';
+
+      // Add site prefix to subject if it exists
+      const subjectInput = form.querySelector('input[name="subject"]');
+      if (subjectInput) {
+        if (!subjectInput.value.startsWith('Site: ')) {
+            subjectInput.value = 'Site: ' + subjectInput.value;
+        }
+      }
+
+      emailjs.sendForm(serviceID, templateID, form)
+        .then(() => {
+          btn.innerText = 'Message envoyé!';
+          btn.classList.remove('btn-primary');
+          btn.classList.add('btn-success');
+          form.reset();
+          setTimeout(() => {
+            btn.innerText = originalText;
+            btn.disabled = false;
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-primary');
+            if (formId === 'quote-form') {
+                const modal = document.getElementById("myModal");
+                if (modal) modal.style.display = "none";
+            }
+          }, 3000);
+        }, (err) => {
+          btn.innerText = 'Erreur!';
+          btn.classList.remove('btn-primary');
+          btn.classList.add('btn-danger');
+          console.error('EmailJS Error:', JSON.stringify(err));
+          alert('Une erreur est survenue: ' + JSON.stringify(err));
+          setTimeout(() => {
+            btn.innerText = originalText;
+            btn.disabled = false;
+            btn.classList.remove('btn-danger');
+            btn.classList.add('btn-primary');
+          }, 3000);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const quoteForm = document.getElementById('quote-form');
+      if (quoteForm) {
+        quoteForm.addEventListener('submit', (e) => handleFormSubmit(e, 'quote-form'));
+      }
+    });
 
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
