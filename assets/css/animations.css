@@ -1,0 +1,417 @@
+/* ==========================================================================
+   ASTUS - animations & visual polish
+   Loaded after the other stylesheets. Remove this file + animations.js to revert.
+   ========================================================================== */
+
+:root {
+  --astus-purple: #6b0080;
+  --astus-purple-dark: #500543;
+  --astus-pink: #d87bc8;
+  --astus-ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* ---------- Scroll progress bar ---------- */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--astus-purple), var(--astus-pink));
+  z-index: 10001;
+  pointer-events: none;
+}
+
+/* ---------- Header: smoother shrink on scroll ---------- */
+.header-modern {
+  transition: padding .35s var(--astus-ease), box-shadow .35s var(--astus-ease), background-color .35s;
+}
+.header-modern.header-scrolled {
+  box-shadow: 0 6px 24px rgba(80, 5, 67, .10);
+}
+
+/* ---------- Hero: readable text + slow "Ken Burns" zoom ---------- */
+.hero-slide { overflow: hidden; }
+
+.hero-slide .hero-bg {
+  position: absolute;
+  inset: -2%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transform: scale(1);
+  will-change: transform;
+}
+.hero-slide.swiper-slide-active .hero-bg {
+  animation: astus-kenburns 9s ease-out forwards;
+}
+@keyframes astus-kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12) translate(-1%, -1%); }
+}
+
+/* Darker, brand-tinted overlay so the white text always reads well */
+.hero-slide::before {
+  background:
+    radial-gradient(ellipse at center, rgba(20, 0, 30, .35) 0%, rgba(20, 0, 30, .65) 100%),
+    linear-gradient(135deg, rgba(107, 0, 128, .45), rgba(216, 123, 200, .20)) !important;
+}
+.hero-slide > .container { position: relative; z-index: 2; }
+
+/* Staggered entrance of hero content every time a slide becomes active */
+.hero-slide .hero-logo,
+.hero-slide .hero-title,
+.hero-slide .hero-subtitle,
+.hero-slide .hero-buttons {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.hero-slide.swiper-slide-active .hero-logo,
+.hero-slide.swiper-slide-active .hero-title,
+.hero-slide.swiper-slide-active .hero-subtitle,
+.hero-slide.swiper-slide-active .hero-buttons {
+  animation: astus-rise .9s var(--astus-ease) forwards;
+}
+.hero-slide.swiper-slide-active .hero-logo     { animation-delay: .15s; }
+.hero-slide.swiper-slide-active .hero-title    { animation-delay: .30s; }
+.hero-slide.swiper-slide-active .hero-subtitle { animation-delay: .45s; }
+.hero-slide.swiper-slide-active .hero-buttons  { animation-delay: .60s; }
+
+@keyframes astus-rise {
+  to { opacity: 1; transform: none; }
+}
+
+.hero-title { text-shadow: 0 4px 24px rgba(0, 0, 0, .35); letter-spacing: -.5px; }
+.hero-subtitle { text-shadow: 0 2px 12px rgba(0, 0, 0, .45); }
+
+/* Scroll-down chevron: gentle bounce */
+.scroll-indicator .scroll-down i {
+  display: inline-block;
+  animation: astus-bounce 2.2s ease-in-out infinite;
+}
+@keyframes astus-bounce {
+  0%, 100% { transform: translateY(0); opacity: .7; }
+  50%      { transform: translateY(10px); opacity: 1; }
+}
+
+/* ---------- Buttons: light sweep on hover ---------- */
+.btn-primary,
+.btn-hero,
+.map-consent-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .25s var(--astus-ease), box-shadow .25s var(--astus-ease), background-color .25s;
+}
+.btn-primary::after,
+.btn-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .35), transparent);
+  transform: skewX(-20deg);
+  z-index: -1;
+  transition: left .6s var(--astus-ease);
+}
+.btn-primary:hover::after,
+.btn-hero:hover::after { left: 130%; }
+.btn-primary:hover,
+.btn-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(107, 0, 128, .28);
+}
+
+/* ---------- Section titles: accent line that draws in ---------- */
+.section-header .section-title { position: relative; padding-bottom: .9rem; }
+.section-header .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 64px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--astus-purple), var(--astus-pink));
+  transform: translateX(-50%) scaleX(0);
+  transition: transform .9s var(--astus-ease) .2s;
+}
+.section-header:not(.text-center) .section-title::after { left: 0; transform: scaleX(0); transform-origin: 0 50%; }
+.section-header.is-visible .section-title::after { transform: translateX(-50%) scaleX(1); }
+.section-header:not(.text-center).is-visible .section-title::after { transform: scaleX(1); }
+
+/* ---------- Images: soft zoom on hover ---------- */
+.about-img-wrapper,
+.why-choose-img-wrapper { overflow: hidden; border-radius: 15px; }
+.about-img-wrapper img,
+.why-choose-img-wrapper img { transition: transform 1.2s var(--astus-ease); }
+.about-img-wrapper:hover img,
+.why-choose-img-wrapper:hover img { transform: scale(1.05); }
+
+/* ---------- Stats ---------- */
+.stats-wrapper .stat-item {
+  transition: transform .3s var(--astus-ease);
+}
+.stats-wrapper .stat-item:hover { transform: translateY(-4px); }
+.stats-wrapper .stat-number {
+  background: linear-gradient(135deg, var(--astus-purple), var(--astus-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Service cards ---------- */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform .4s var(--astus-ease), box-shadow .4s var(--astus-ease), border-color .4s;
+}
+/* gradient bar that slides in on top of the card */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--astus-purple), var(--astus-pink));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .5s var(--astus-ease);
+}
+.service-card:hover::before { transform: scaleX(1); }
+
+/* pulsing ring around the icon */
+.service-icon { position: relative; }
+.service-icon::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--astus-pink);
+  opacity: 0;
+}
+.service-card:hover .service-icon { transform: scale(1.08) rotate(-6deg); }
+.service-card:hover .service-icon::after { animation: astus-ring 1.2s ease-out infinite; }
+@keyframes astus-ring {
+  from { transform: scale(.9); opacity: .9; }
+  to   { transform: scale(1.35); opacity: 0; }
+}
+
+.service-link i { display: inline-block; transition: transform .3s var(--astus-ease); }
+.service-card:hover .service-link i { transform: translateX(6px); }
+
+.feature-tag { transition: background-color .3s, color .3s; }
+.service-card:hover .feature-tag { background: rgba(107, 0, 128, .10); }
+
+/* ---------- Contact cards ---------- */
+.contact-info-card { transition: transform .35s var(--astus-ease), box-shadow .35s var(--astus-ease); }
+.contact-info-card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(80, 5, 67, .12); }
+
+/* Form fields: brand focus ring */
+.emailjs-form .form-control { transition: border-color .25s, box-shadow .25s; }
+.emailjs-form .form-control:focus {
+  border-color: var(--astus-purple);
+  box-shadow: 0 0 0 4px rgba(107, 0, 128, .12);
+}
+
+/* ---------- Brand colours for cookie banner + map placeholder ---------- */
+.cookie-banner-actions button,
+.map-consent-btn {
+  background: var(--astus-purple) !important;
+}
+.cookie-banner-actions button:hover,
+.map-consent-btn:hover { background: var(--astus-purple-dark) !important; }
+#cookie-banner { animation: astus-rise-banner .5s var(--astus-ease); border-top: 3px solid var(--astus-purple); }
+@keyframes astus-rise-banner { from { opacity: 0; transform: translateY(30px); } }
+.map-consent {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(216, 123, 200, .18), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(107, 0, 128, .12), transparent 60%),
+    #f4f1f6 !important;
+}
+
+/* ---------- Accessibility: respect "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .hero-slide .hero-logo,
+  .hero-slide .hero-title,
+  .hero-slide .hero-subtitle,
+  .hero-slide .hero-buttons { opacity: 1; transform: none; }
+  #scroll-progress { display: none; }
+}
+
+/* ==========================================================================
+   Phone polish - same ASTUS identity (purple gradients, photos, cards),
+   tighter and more modern on small screens.
+   ========================================================================== */
+@media (max-width: 767px) {
+
+  /* Rhythm: less dead space between sections */
+  .about-modern,
+  .why-choose-modern,
+  .contact-modern { padding-top: 56px !important; padding-bottom: 56px !important; }
+  .services-modern { padding-top: 64px !important; padding-bottom: 56px !important; }
+
+  /* Section headers: eyebrow as a soft purple pill, bigger title */
+  .section-subtitle {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(107, 0, 128, .08);
+    width: fit-content;
+    font-size: 12px !important;
+    margin-bottom: 12px;
+  }
+  .section-title { font-size: 1.85rem !important; line-height: 1.2; }
+  .section-description { font-size: 1rem; margin-top: 4px; }
+  .section-header.mb-5 { margin-bottom: 2rem !important; }
+
+  /* Readable body text */
+  .about-content p,
+  .why-choose-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #3d3a45;
+  }
+
+  /* Hero: bigger, tighter title, stacked full-width buttons, no arrows */
+  .hero-title { font-size: 2.1rem !important; line-height: 1.15; }
+  .hero-subtitle { font-size: 1rem !important; line-height: 1.55; }
+  .hero-logo-img { max-height: 64px; }
+  .hero-buttons { display: flex; flex-direction: column; gap: 12px; align-items: stretch; padding: 0 12px; }
+  .hero-buttons .btn-hero { margin: 0 !important; width: 100%; }
+  #hero .swiper-button-next,
+  #hero .swiper-button-prev { display: none !important; }
+
+  /* Photos: full width, same height, rounded */
+  .about-img-wrapper,
+  .why-choose-img-wrapper { margin-bottom: 28px; border-radius: 20px; box-shadow: 0 18px 40px rgba(80, 5, 67, .18); }
+  .about-img-wrapper img,
+  .why-choose-img-wrapper img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+  }
+  .why-choose-img-wrapper { margin: 28px 0 0; }
+
+  /* Expertise list as chips */
+  .expertise-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px !important;
+  }
+  .expertise-list li {
+    margin: 0 !important;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #f6eef8;
+    font-size: 14px;
+  }
+  .expertise-domains .col-md-6 { width: 100%; }
+  .about-content .btn-lg { width: 100%; }
+
+  /* Stats: purple gradient band, white numbers */
+  .stats-wrapper {
+    background: linear-gradient(135deg, #6b0080, #a23cb5) !important;
+    padding: 22px 8px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 14px 30px rgba(107, 0, 128, .25) !important;
+  }
+  .stats-wrapper .stat-number {
+    -webkit-text-fill-color: #fff !important;
+    color: #fff !important;
+    background: none !important;
+    font-size: 2rem !important;
+  }
+  .stats-wrapper .stat-label { color: rgba(255, 255, 255, .85) !important; font-size: 12.5px; }
+
+  /* Service cards: icon on the left, text on the right */
+  .service-card {
+    display: grid !important;
+    grid-template-columns: 56px 1fr;
+    column-gap: 16px;
+    align-items: start;
+    text-align: left !important;
+    padding: 22px 20px !important;
+    border-radius: 20px !important;
+  }
+  .service-card .service-icon {
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 1.35rem !important;
+    margin: 0 !important;
+    box-shadow: 0 8px 18px rgba(107, 0, 128, .25);
+  }
+  .service-card .service-title { font-size: 1.2rem !important; margin-bottom: .4rem !important; }
+  .service-card .service-description { font-size: 15px; line-height: 1.6; margin-bottom: .9rem; }
+  .service-card .service-features { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-start; margin-bottom: .9rem !important; }
+  .service-card .feature-tag { margin: 0 !important; }
+  .services-modern .row.g-4 { --bs-gutter-y: 14px; }
+
+  /* Contact cards: compact rows (icon left) */
+  .contact-info-card {
+    display: grid !important;
+    grid-template-columns: 48px 1fr;
+    column-gap: 14px;
+    align-items: center;
+    text-align: left !important;
+    padding: 16px 18px !important;
+    margin-bottom: 12px !important;
+    border-radius: 16px !important;
+  }
+  .contact-info-card .contact-icon {
+    grid-row: span 2;
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.15rem;
+    margin: 0 !important;
+  }
+  .contact-info-card h3 { font-size: 15px !important; margin: 0 !important; color: #6b0080; font-weight: 600; }
+  .contact-info-card p { margin: 0 !important; font-size: 16px; }
+  .contact-info-card p a { color: #2c2a33 !important; }
+  .contact-form { padding: 24px 18px !important; border-radius: 20px !important; margin-top: 12px; }
+  .contact-form .btn-lg { width: 100%; }
+  .map-container { border-radius: 20px !important; }
+
+  /* Floating "call" button */
+  #call-fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9990;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    background: linear-gradient(135deg, #6b0080, #d87bc8);
+    box-shadow: 0 10px 24px rgba(107, 0, 128, .4);
+    text-decoration: none;
+  }
+  #call-fab::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #d87bc8;
+    animation: astus-ring 2.4s ease-out infinite;
+  }
+}
+@media (min-width: 768px) { #call-fab { display: none; } }

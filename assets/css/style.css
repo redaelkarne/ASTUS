@@ -2169,3 +2169,82 @@ section {
   background-color: #ccffcc;
   color: #009900;
 }
+
+/* Click-to-load Google Maps (RGPD: no request to Google before consent) */
+.map-consent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #f1f3f5;
+  color: #444;
+  font-size: 14px;
+}
+.map-consent p { max-width: 520px; margin: 0; }
+.map-consent-btn {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 22px;
+  background: #6b0080;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Cookie consent banner */
+#cookie-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10000;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 16px 20px;
+  background: #fff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  font-size: 14px;
+}
+#cookie-banner p { flex: 1 1 320px; margin: 0; }
+.cookie-banner-actions { display: flex; gap: 10px; }
+.cookie-banner-actions button {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #6b0080;
+  color: #fff;
+}
+#cookie-manage {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 9999;
+  border: 0;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Footer: deep ASTUS purple instead of grey (all pages) */
+#footer { background: linear-gradient(135deg, #2a0033 0%, #500543 60%, #6b0080 100%) !important; }
+#footer .footer-top { background: transparent !important; }
+#footer .footer-top .footer-info h3 { color: #fff; letter-spacing: .5px; }
+#footer .footer-top .footer-info p,
+#footer .footer-top .footer-links a { color: rgba(255, 255, 255, .82) !important; }
+#footer .footer-top h4 { color: #fff; }
+#footer .footer-top .footer-links a:hover { color: #fff !important; }
+#footer .footer-top .footer-links i { color: #d87bc8 !important; }

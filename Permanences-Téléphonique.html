@@ -15,18 +15,17 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/mobile-menu-fix.js"></script>
 
+  <script src="assets/js/navbar.js"></script>
 </body>
 
 </html>h-icon.png" rel="apple-touch-icon">
 
   <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://unpkg.com">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/css/fonts.css" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -117,10 +116,9 @@
         <ul>
           <li><a href="index.html" class="nav-link">Accueil</a></li>
           <li><a href="index.html#services-section" class="nav-link">Services</a></li>
-          <li><a href="blog.html" class="nav-link">Blog</a></li>
           <li><a href="recrutement.html" class="nav-link">Nous rejoindre</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="https://webclient.astus.fr/" class="btn-client" target="_blank">Accès client</a></li>
+          <li><a href="https://webacces.astus.fr/accounts/login/" class="btn-client" target="_blank" rel="noopener">Accès client</a></li>
           <li><a href="#" class="btn-quote" id="openFormButton">Demander un devis</a></li>
         </ul>
       </nav>
@@ -398,9 +396,9 @@
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/navbar.js"></script>
 
   <!-- EmailJS SDK -->
+  <script src="assets/js/form-guard.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {

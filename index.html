@@ -14,8 +14,6 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://unpkg.com">
 
@@ -33,13 +31,14 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <!-- Google Fonts optimized -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/css/fonts.css" rel="stylesheet">
   
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/modern-styles.css" rel="stylesheet">
   <link href="assets/css/navbar.css" rel="stylesheet">
   <link href="assets/css/service-cards.css" rel="stylesheet">
+  <link href="assets/css/animations.css" rel="stylesheet">
 
   <!-- Styles prioritaires pour la navbar -->
   <style>
@@ -268,7 +267,7 @@
           <li><a href="#services-section" class="nav-link">Services</a></li>
           <li><a href="recrutement.html" class="nav-link">Nous rejoindre</a></li>
           <li><a href="#contact-section" class="nav-link">Contact</a></li>
-          <li><a href="https://webclient.astus.fr/" class="btn-client" target="_blank">Accès client</a></li>
+          <li><a href="https://webacces.astus.fr/accounts/login/" class="btn-client" target="_blank" rel="noopener">Accès client</a></li>
           <li><a href="#" class="btn-quote" id="openFormButton">Demander un devis</a></li>
         </ul>
       </nav>
@@ -478,16 +477,22 @@
               
               <div class="stats-wrapper mt-4">
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-4">
                     <div class="stat-item text-center">
                       <div class="stat-number">24/7</div>
                       <div class="stat-label">Service continu</div>
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-4">
                     <div class="stat-item text-center">
-                      <div class="stat-number">365</div>
+                      <div class="stat-number" data-count="365">365</div>
                       <div class="stat-label">Jours par an</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="stat-item text-center">
+                      <div class="stat-number" data-count-since="1993" data-suffix="+">30+</div>
+                      <div class="stat-label">Ans d'expérience</div>
                     </div>
                   </div>
                 </div>
@@ -674,7 +679,11 @@
     <div class="row mb-5">
       <div class="col-12" data-aos="fade-up" data-aos-delay="100">
         <div class="map-container" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=289%20rue%20Garibaldi,69007%20LYON,FRANCE+(ASTUS)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" allowfullscreen title="Localisation ASTUS - 289 rue Garibaldi, 69007 Lyon"></iframe>
+          <div class="map-consent" style="height: 350px;" data-src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=289%20rue%20Garibaldi,69007%20LYON,FRANCE+(ASTUS)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+            <p>Cette carte est fournie par Google Maps. En l'affichant, vous acceptez que Google dépose des cookies et collecte des données (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité</a>).</p>
+            <button type="button" class="map-consent-btn">Afficher la carte</button>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=289+rue+Garibaldi+69007+LYON" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+          </div>
         </div>
       </div>
     </div>
@@ -761,7 +770,7 @@
               <p>
                 289 rue Garibaldi <br>
                 69007 LYON,FRANCE<br><br>
-                <strong>Tél : </strong>  0811 74 24 24<br>
+                <strong>Tél : </strong> <a href="tel:0811742424" style="color: white;">0811 74 24 24</a><br>
                 <strong>E-mail: </strong><a href="mailto:astus@astus.fr" style="color: white;">astus@astus.fr</a><br>
 
               </p>
@@ -792,9 +801,9 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   
   <!-- Template Main JS File -->
+  <script src="assets/js/cookie-consent.js"></script>
+  <script src="assets/js/animations.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/navbar-sidebar.js"></script>
-  <script src="assets/js/navbar-sidebar.js"></script>
   
   <!-- Initialize AOS animations -->
   <script>
@@ -807,6 +816,7 @@
   </script>
 
   <!-- EmailJS SDK & Script -->
+  <script src="assets/js/form-guard.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
@@ -879,7 +889,7 @@
           }, function(error) {
               console.log('FAILED...', error);
               loading.style.display = 'none';
-              errorMessage.innerHTML = "Une erreur s'est produite : " + (error.text || JSON.stringify(error));
+              errorMessage.textContent = "Une erreur s'est produite : " + (error.text || JSON.stringify(error));
               errorMessage.style.display = 'block';
           });
       });
@@ -1049,6 +1059,7 @@
 
 
   
+  <script src="assets/js/navbar.js"></script>
 </body>
 
 </html>
